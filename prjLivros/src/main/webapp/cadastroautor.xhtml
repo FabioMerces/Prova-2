@@ -1,0 +1,56 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Cadastro de Autores" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<h1>Cadastro de Autores</h1>
+		<h:form id="formAutor">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="CPF" />
+				<p:inputText value="#{autorMB.autor.CPF}" />
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{autorMB.autor.nome}" />
+				<p:outputLabel value="Pseudônimo" />
+				<p:inputText value="#{autorMB.autor.pseudonimo}" />
+				<p:outputLabel value="Nacionalidade" />
+				<p:inputText value="#{autorMB.autor.nacionalidade}" />
+				<p:outputLabel value="Data de Nascimento" />
+				<p:inputText value="#{autorMB.autor.dataNascimento}" />
+			</p:panelGrid>
+			<p:commandButton value="Salvar" action="#{autorMB.salvar}"
+				update=":formAutor" />
+
+			<p:dataTable value="#{autorMB.autors}" var="aux">
+				<p:column headerText="CPF">
+					<h:outputText value="#{aux.CPF}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{aux.nome}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Pseudônimo">
+					<h:outputText value="#{aux.pseudonimo}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Nacionalidade">
+					<h:outputText value="#{aux.nacionalidade}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Data de Nascimento">
+					<h:outputText value="#{aux.dataNascimento}"></h:outputText>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
